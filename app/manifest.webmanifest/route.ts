@@ -39,7 +39,11 @@ export function GET(request: NextRequest) {
             display_override: ["minimal-ui", "standalone"],
             theme_color: "#f8f7f2",
           }
-        : baseManifest;
+        : {
+            ...baseManifest,
+            display: "standalone",
+            display_override: ["standalone"],
+          };
 
   return new NextResponse(JSON.stringify(manifest), {
     headers: {
