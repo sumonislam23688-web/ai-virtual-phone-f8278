@@ -3,7 +3,7 @@
 CREATE OR REPLACE FUNCTION public.omate_match_resources(
   p_owner uuid,
   p_space text,
-  p_query_embedding vector,
+  p_query_embedding extensions.vector,
   p_limit integer DEFAULT 6
 )
 RETURNS TABLE(id uuid, title text, content text, resource_type text, similarity double precision)
@@ -23,5 +23,5 @@ AS $function$
  LIMIT LEAST(GREATEST(p_limit, 1), 12);
 $function$;
 
-REVOKE ALL ON FUNCTION public.omate_match_resources(uuid, text, vector, integer) FROM PUBLIC;
-GRANT EXECUTE ON FUNCTION public.omate_match_resources(uuid, text, vector, integer) TO service_role;
+REVOKE ALL ON FUNCTION public.omate_match_resources(uuid, text, extensions.vector, integer) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.omate_match_resources(uuid, text, extensions.vector, integer) TO service_role;
