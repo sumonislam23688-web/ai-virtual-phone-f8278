@@ -38,7 +38,7 @@ jobs:
       - name: Install database tables and vector search
         run: supabase db push --yes
       - name: Deploy memory API
-        run: supabase functions deploy omate-memory-api --project-ref "$SUPABASE_PROJECT_ID" --use-api --no-verify-jwt
+        run: supabase functions deploy omate-memory-api --project-ref "$SUPABASE_PROJECT_ID" --use-api
       - name: Deploy MCP API
         run: supabase functions deploy omate-memory-mcp --project-ref "$SUPABASE_PROJECT_ID" --use-api --no-verify-jwt
       - name: Deploy four resources API
